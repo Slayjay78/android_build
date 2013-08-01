@@ -413,6 +413,23 @@ def WriteFullOTAPackage(input_zip, output_zip):
   device_specific.FullOTA_InstallBegin()
 
   script.ShowProgress(0.5, 0)
+  script.Print("")
+  script.Print("")
+  script.Print("      ########    ######   ##     ##     ")
+  script.Print("      ##     ##  ##    ##   ##   ##      ")
+  script.Print("      ##     ##  ##          ## ##       ")
+  script.Print("      ########    ######      ###        ")
+  script.Print("      ##               ##    ## ##       ")
+  script.Print("      ##         ##    ##   ##   ##      ")
+  script.Print("      ##          ######   ##     ##     ")
+  script.Print("")
+  script.Print("")
+  script.Print("            Pure Speed Xperiment        ")
+  script.Print("")
+  script.Print("")
+  script.Print("")
+  script.Print("                Buckle Up!              ")
+  script.Print("")
 
   if OPTIONS.wipe_user_data:
     script.FormatPartition("/data")
