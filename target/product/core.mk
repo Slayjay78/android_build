@@ -20,14 +20,12 @@
 # core_minimal.mk instead.
 
 PRODUCT_PACKAGES += \
-    BasicDreams \
     Browser \
     Contacts \
     DocumentsUI \
     DownloadProviderUi \
     ExternalStorageProvider \
     KeyChain \
-    PicoTts \
     PacProcessor \
     ProxyHandler \
     SharedStorageBackup \
