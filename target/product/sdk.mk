@@ -25,7 +25,9 @@ PRODUCT_PACKAGES := \
 	Mms \
 	PrintSpooler \
 	TeleService \
+	SoftKeyboard \
 	SystemUI \
+	Launcher2 \
 	Development \
 	DevelopmentSettings \
 	Fallback \
