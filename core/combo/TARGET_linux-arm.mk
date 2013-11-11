@@ -71,11 +71,11 @@ TARGET_NO_UNDEFINED_LDFLAGS := -Wl,--no-undefined
 TARGET_arm_CFLAGS :=    -O3 \
                         -fomit-frame-pointer \
                         -fstrict-aliasing    \
-                        -funroll-loops \
-                        -ftree-loop-distribution \
-                        -ftree-loop-linear \
+                        -funswitch-loops \
+                        -funsafe-loop-optimizations \
                         -ftree-vectorize \
                         -Wstrict-aliasing=2 \
+			-Werror=strict-aliasing \
                         -pipe
 
 # Modules can choose to compile some source as thumb.
@@ -83,21 +83,15 @@ ifeq ($(TARGET_USE_O3),true)
     TARGET_thumb_CFLAGS := -mthumb \
                         -O3 \
                         -fomit-frame-pointer \
-                        -fstrict-aliasing \
                         -funsafe-math-optimizations \
-                        -Wstrict-aliasing=2 \
                         -fno-strict-aliasing \
-                        -funroll-loops \
                         -pipe
 else
     TARGET_thumb_CFLAGS :=  -mthumb \
                             -Os \
                             -fomit-frame-pointer \
-                            -fstrict-aliasing \
                             -funsafe-math-optimizations \
-                            -Wstrict-aliasing=2 \
                             -fno-strict-aliasing \
-                            -funroll-loops \
                             -pipe
 endif
 
@@ -135,6 +129,7 @@ TARGET_GLOBAL_CFLAGS += \
 			-Werror=format-security \
 			-D_FORTIFY_SOURCE=2 \
 			-fno-short-enums \
+			-pipe \
 			$(arch_variant_cflags) \
 			-include $(android_config_h) \
 			-I $(dir $(android_config_h))
