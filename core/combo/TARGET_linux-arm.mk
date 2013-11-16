@@ -68,7 +68,7 @@ endif
 
 TARGET_NO_UNDEFINED_LDFLAGS := -Wl,--no-undefined
 
-TARGET_arm_CFLAGS :=    -Ofast \
+TARGET_arm_CFLAGS :=    -O3 \
                         -fomit-frame-pointer \
                         -fstrict-aliasing    \
                         -funswitch-loops \
@@ -81,7 +81,7 @@ TARGET_arm_CFLAGS :=    -Ofast \
 # Modules can choose to compile some source as thumb.
 ifeq ($(TARGET_USE_O3),true)
     TARGET_thumb_CFLAGS := -mthumb \
-                        -Ofast \
+                        -O3 \
                         -fomit-frame-pointer \
                         -funsafe-math-optimizations \
                         -fno-strict-aliasing \
