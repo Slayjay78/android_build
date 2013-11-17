@@ -23,23 +23,14 @@ PRODUCT_PACKAGES := \
     DeskClock \
     Bluetooth \
     Calculator \
-    Calendar \
-    Camera2 \
     CertInstaller \
-    Email \
-    Exchange2 \
     FusedLocation \
-    Gallery2 \
     InputDevices \
     Keyguard \
     LatinIME \
     Launcher2 \
-    Music \
     MusicFX \
-    OneTimeInitializer \
     PrintSpooler \
-    Provision \
-    QuickSearchBox \
     Settings \
     SystemUI \
     TeleService \
@@ -61,12 +52,7 @@ PRODUCT_PACKAGES += \
     wpa_supplicant
 
 PRODUCT_PACKAGES += \
-    librs_jni \
-    libvideoeditor_jni \
-    libvideoeditor_core \
-    libvideoeditor_osal \
-    libvideoeditor_videofilters \
-    libvideoeditorplayer \
+    librs_jni
 
 PRODUCT_PACKAGES += \
     audio.primary.default \
