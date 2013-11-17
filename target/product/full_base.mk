@@ -31,7 +31,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES := \
     ro.com.android.dateformat=MM-dd-yyyy \
     ro.config.ringtone=RobotsforEveryone.ogg \
-    ro.config.notification_sound=Europa.ogg
+    ro.config.notification_sound=Europa.ogg \
+    ro.config.alarm_alert=Helium.ogg
 
 # Put en_US first in the list, so make it default.
 PRODUCT_LOCALES := en_US
