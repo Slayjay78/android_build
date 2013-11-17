@@ -28,7 +28,6 @@ PRODUCT_PACKAGES := \
     InputDevices \
     Keyguard \
     LatinIME \
-    Launcher2 \
     MusicFX \
     PrintSpooler \
     Settings \
