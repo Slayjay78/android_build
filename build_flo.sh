@@ -20,7 +20,7 @@ lunch psx_flo-user
 
 make otapackage -j16
 
-# Let's show a notify-send prompt saying we are down building
+# Let's show a notify-send prompt saying we are done building
 
 notify-send 'All done building!!' --icon=dialog-information 
 
