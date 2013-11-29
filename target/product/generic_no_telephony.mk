@@ -27,7 +27,6 @@ PRODUCT_PACKAGES := \
     FusedLocation \
     InputDevices \
     Keyguard \
-    LatinIME \
     MusicFX \
     PrintSpooler \
     Settings \

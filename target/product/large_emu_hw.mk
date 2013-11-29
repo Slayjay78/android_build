@@ -24,7 +24,6 @@ PRODUCT_PACKAGES := \
     Bluetooth \
     Calculator \
     CertInstaller \
-    LatinIME \
     Settings \
     Sync \
     Updater \
