@@ -21,11 +21,14 @@ PRODUCT_PACKAGES := \
 	Calculator \
 	DeskClock \
 	FusedLocation \
+	Gallery \
 	Keyguard \
 	Mms \
 	PrintSpooler \
 	TeleService \
+	SoftKeyboard \
 	SystemUI \
+	Launcher2 \
 	Development \
 	DevelopmentSettings \
 	Fallback \
@@ -45,7 +48,8 @@ PRODUCT_PACKAGES := \
 	CalendarProvider \
 	SmokeTest \
 	SmokeTestApp \
-	rild
+	rild \
+	LegacyCamera
 
 # Define the host tools and libs that are parts of the SDK.
 -include sdk/build/product_sdk.mk

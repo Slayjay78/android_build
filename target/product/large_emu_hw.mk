@@ -24,6 +24,8 @@ PRODUCT_PACKAGES := \
     Bluetooth \
     Calculator \
     CertInstaller \
+	Gallery2 \
+	Launcher3 \
     Settings \
     Sync \
     Updater \

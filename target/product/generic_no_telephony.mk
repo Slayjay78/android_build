@@ -23,10 +23,13 @@ PRODUCT_PACKAGES := \
     DeskClock \
     Bluetooth \
     Calculator \
+	Camera2 \
     CertInstaller \
     FusedLocation \
+	Gallery2 \
     InputDevices \
     Keyguard \
+	Launcher3 \
     MusicFX \
     PrintSpooler \
     Settings \
