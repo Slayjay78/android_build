@@ -25,7 +25,9 @@ PRODUCT_PACKAGES := \
     Calculator \
     CertInstaller \
 	Gallery2 \
+	LatinIME\
 	Launcher3 \
+    Provision \
     Settings \
     Sync \
     Updater \

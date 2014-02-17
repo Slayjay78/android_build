@@ -28,7 +28,7 @@ PRODUCT_PACKAGES := \
 	TeleService \
 	SoftKeyboard \
 	SystemUI \
-	Launcher2 \
+	Launcher3 \
 	Development \
 	DevelopmentSettings \
 	Fallback \
