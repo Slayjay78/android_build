@@ -49,7 +49,7 @@ include $(TARGET_ARCH_SPECIFIC_MAKEFILE)
 
 # You can set TARGET_TOOLS_PREFIX to get gcc from somewhere else
 ifeq ($(strip $(TARGET_TOOLS_PREFIX)),)
-TARGET_TOOLCHAIN_ROOT := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_GCC_VERSION)
+TARGET_TOOLCHAIN_ROOT := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-4.8-linaro
 TARGET_TOOLS_PREFIX := $(TARGET_TOOLCHAIN_ROOT)/bin/arm-linux-androideabi-
 endif
 
@@ -75,18 +75,20 @@ TARGET_arm_CFLAGS :=    -O3 \
                         -funsafe-loop-optimizations \
                         -ftree-vectorize \
                         -Wstrict-aliasing \
-			            -Werror=strict-aliasing \
+                        -Werror=strict-aliasing
 
 # Modules can choose to compile some source as thumb.
-    TARGET_thumb_CFLAGS := -mthumb \
+TARGET_thumb_CFLAGS := -mthumb \
                         -O3 \
                         -fomit-frame-pointer \
                         -funsafe-math-optimizations \
-                        -fno-strict-aliasing \
-
-TARGET_arm_CFLAGS +=    -Wno-unused-parameter \
-                        -Wno-unused-value \
-                        -Wno-unused-function
+			-fstrict-aliasing \
+                        -Wstrict-aliasing \
+                        -Werror=strict-aliasing
+						
+TARGET_arm_CFLAGS +=  -Wno-unused-parameter \
+                      -Wno-unused-value \
+                      -Wno-unused-function
 
 TARGET_thumb_CFLAGS +=  -Wno-unused-parameter \
                         -Wno-unused-value \
@@ -102,7 +104,7 @@ TARGET_thumb_CFLAGS +=  -Wno-unused-parameter \
 # with -mlong-calls.  When built at -O0, those libraries are
 # too big for a thumb "BL <label>" to go from one end to the other.
 ifeq ($(FORCE_ARM_DEBUGGING),true)
-  TARGET_arm_CFLAGS += -fno-omit-frame-pointer -fno-strict-aliasing
+  TARGET_arm_CFLAGS += -fomit-frame-pointer -fstrict-aliasing
   TARGET_thumb_CFLAGS += -marm -fomit-frame-pointer
 endif
 
@@ -118,15 +120,17 @@ TARGET_GLOBAL_CFLAGS += \
 			-Werror=format-security \
 			-D_FORTIFY_SOURCE=2 \
 			-fno-short-enums \
-			-pipe \
+			-fstrict-aliasing \
+                        -Wstrict-aliasing \
+                        -Werror=strict-aliasing \
 			$(arch_variant_cflags) \
 			-include $(android_config_h) \
 			-I $(dir $(android_config_h))
 
-# The "-Wunused-but-set-variable" option often breaks projects that enable
-# "-Wall -Werror" due to a commom idiom "ALOGV(mesg)" where ALOGV is turned
-# into no-op in some builds while mesg is defined earlier. So we explicitly
-# disable "-Wunused-but-set-variable" here.
+# This warning causes dalvik not to build with gcc 4.6+ and -Werror.
+# We cannot turn it off blindly since the option is not available
+# in gcc-4.4.x.  We also want to disable sincos optimization globally
+# by turning off the builtin sin function.
 ifneq ($(filter 4.6 4.6.% 4.7 4.7.% 4.8, $(TARGET_GCC_VERSION)),)
 TARGET_GLOBAL_CFLAGS += -Wno-unused-but-set-variable -fno-builtin-sin \
 			-fno-strict-volatile-bitfields
@@ -159,7 +163,8 @@ TARGET_GLOBAL_CPPFLAGS += -fvisibility-inlines-hidden
 TARGET_RELEASE_CFLAGS := \
 			-DNDEBUG \
 			-g \
-			-Wstrict-aliasing=2 \
+			-Wstrict-aliasing \
+			-Werror=strict-aliasing \
 			-fgcse-after-reload \
 			-frerun-cse-after-loop \
 			-frename-registers
