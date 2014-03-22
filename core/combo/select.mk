@@ -23,6 +23,8 @@
 # Build a target string like "linux-arm" or "darwin-x86".
 combo_os_arch := $($(combo_target)OS)-$($(combo_target)ARCH)
 
+OPT_MEM := -fgcse-las -fipa-pta
+
 # Set reasonable defaults for the various variables
 
 $(combo_target)CC := $(CC)
@@ -55,6 +57,10 @@ $(combo_target)EXECUTABLE_SUFFIX :=
 $(combo_target)SHLIB_SUFFIX := .so
 $(combo_target)JNILIB_SUFFIX := $($(combo_target)SHLIB_SUFFIX)
 $(combo_target)STATIC_LIB_SUFFIX := .a
+
+ifdef OPT_MEMORY
+TARGET_arm_CFLAGS += $(OPT_MEM)
+endif
 
 # Now include the combo for this specific target.
 include $(BUILD_COMBOS)/$(combo_target)$(combo_os_arch).mk

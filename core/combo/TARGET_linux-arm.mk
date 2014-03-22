@@ -67,6 +67,7 @@ else
 endif
 
 TARGET_NO_UNDEFINED_LDFLAGS := -Wl,--no-undefined
+OPT_MEM := -fgcse-las -fipa-pta
 
 TARGET_arm_CFLAGS :=    -O3 \
                         -fomit-frame-pointer \
@@ -77,6 +78,10 @@ TARGET_arm_CFLAGS :=    -O3 \
                         -Wstrict-aliasing \
                         -Werror=strict-aliasing
 
+ifdef OPT_MEMORY
+TARGET_arm_CFLAGS += $(OPT_MEM)
+endif
+
 # Modules can choose to compile some source as thumb.
 TARGET_thumb_CFLAGS := -mthumb \
                         -O3 \
@@ -85,6 +90,10 @@ TARGET_thumb_CFLAGS := -mthumb \
 			-fstrict-aliasing \
                         -Wstrict-aliasing \
                         -Werror=strict-aliasing
+
+ifdef OPT_MEMORY
+TARGET_arm_CFLAGS += $(OPT_MEM)
+endif
 						
 TARGET_arm_CFLAGS +=  -Wno-unused-parameter \
                       -Wno-unused-value \
@@ -127,6 +136,10 @@ TARGET_GLOBAL_CFLAGS += \
 			-include $(android_config_h) \
 			-I $(dir $(android_config_h))
 
+ifdef OPT_MEMORY
+TARGET_arm_CFLAGS += $(OPT_MEM)
+endif
+
 # This warning causes dalvik not to build with gcc 4.6+ and -Werror.
 # We cannot turn it off blindly since the option is not available
 # in gcc-4.4.x.  We also want to disable sincos optimization globally
@@ -168,6 +181,10 @@ TARGET_RELEASE_CFLAGS := \
 			-fgcse-after-reload \
 			-frerun-cse-after-loop \
 			-frename-registers
+
+ifdef OPT_MEMORY
+TARGET_arm_CFLAGS += $(OPT_MEM)
+endif
 
 libc_root := bionic/libc
 libm_root := bionic/libm
