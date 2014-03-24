@@ -23,7 +23,7 @@
 # Build a target string like "linux-arm" or "darwin-x86".
 combo_os_arch := $($(combo_target)OS)-$($(combo_target)ARCH)
 
-OPT_MEM := -fgcse-las -fipa-pta
+OPT_MEM := -fgcse-las
 
 # Set reasonable defaults for the various variables
 

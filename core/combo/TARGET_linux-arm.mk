@@ -67,7 +67,7 @@ else
 endif
 
 TARGET_NO_UNDEFINED_LDFLAGS := -Wl,--no-undefined
-OPT_MEM := -fgcse-las -fipa-pta
+OPT_MEM := -fgcse-las
 
 TARGET_arm_CFLAGS :=    -O3 \
                         -fomit-frame-pointer \
