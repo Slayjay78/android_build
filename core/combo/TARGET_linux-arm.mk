@@ -35,7 +35,7 @@ TARGET_ARCH_VARIANT := armv5te
 endif
 
 ifeq ($(strip $(TARGET_GCC_VERSION_EXP)),)
-TARGET_GCC_VERSION := 4.7
+TARGET_GCC_VERSION := 4.8
 else
 TARGET_GCC_VERSION := $(TARGET_GCC_VERSION_EXP)
 endif
@@ -74,26 +74,15 @@ TARGET_arm_CFLAGS :=    -O3 \
                         -funswitch-loops \
                         -funsafe-loop-optimizations \
                         -ftree-vectorize \
-                        -Wstrict-aliasing=2 \
-			-Werror=strict-aliasing \
-                        -pipe
+                        -Wstrict-aliasing \
+			            -Werror=strict-aliasing \
 
 # Modules can choose to compile some source as thumb.
-ifeq ($(TARGET_USE_O3),true)
     TARGET_thumb_CFLAGS := -mthumb \
                         -O3 \
                         -fomit-frame-pointer \
                         -funsafe-math-optimizations \
                         -fno-strict-aliasing \
-                        -pipe
-else
-    TARGET_thumb_CFLAGS :=  -mthumb \
-                            -Os \
-                            -fomit-frame-pointer \
-                            -funsafe-math-optimizations \
-                            -fno-strict-aliasing \
-                            -pipe
-endif
 
 TARGET_arm_CFLAGS +=    -Wno-unused-parameter \
                         -Wno-unused-value \
@@ -114,7 +103,7 @@ TARGET_thumb_CFLAGS +=  -Wno-unused-parameter \
 # too big for a thumb "BL <label>" to go from one end to the other.
 ifeq ($(FORCE_ARM_DEBUGGING),true)
   TARGET_arm_CFLAGS += -fno-omit-frame-pointer -fno-strict-aliasing
-  TARGET_thumb_CFLAGS += -marm -fno-omit-frame-pointer
+  TARGET_thumb_CFLAGS += -marm -fomit-frame-pointer
 endif
 
 android_config_h := $(call select-android-config-h,linux-arm)
