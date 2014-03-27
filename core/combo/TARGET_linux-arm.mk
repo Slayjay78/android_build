@@ -84,7 +84,7 @@ endif
 
 # Modules can choose to compile some source as thumb.
 TARGET_thumb_CFLAGS := -mthumb \
-                        -O3 \
+                        -Os \
                         -fomit-frame-pointer \
                         -funsafe-math-optimizations \
 			-fstrict-aliasing \
