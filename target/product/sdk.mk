@@ -37,6 +37,7 @@ PRODUCT_PACKAGES := \
 	CustomLocale \
 	sqlite3 \
 	InputDevices \
+	LatinIME \
 	CertInstaller \
 	LiveWallpapersPicker \
 	ApiDemos \
