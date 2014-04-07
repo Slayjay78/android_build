@@ -74,7 +74,6 @@ TARGET_arm_CFLAGS :=    -O3 \
                         -fstrict-aliasing    \
                         -funswitch-loops \
                         -funsafe-loop-optimizations \
-                        -ftree-vectorize \
                         -Wstrict-aliasing \
                         -Werror=strict-aliasing
 
