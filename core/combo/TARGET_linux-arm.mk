@@ -72,7 +72,7 @@ OPT_MEM := -fgcse-las
 TARGET_arm_CFLAGS :=    -O3 \
                         -fomit-frame-pointer \
                         -fstrict-aliasing    \
-                        -funswitch-loops \
+						-fno-tree-vectorize \
                         -funsafe-loop-optimizations \
                         -Wstrict-aliasing \
                         -Werror=strict-aliasing
