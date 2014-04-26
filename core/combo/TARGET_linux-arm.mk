@@ -72,7 +72,7 @@ OPT_MEM := -fgcse-las
 TARGET_arm_CFLAGS :=    -O3 \
                         -fomit-frame-pointer \
                         -fstrict-aliasing    \
-						-fno-tree-vectorize \
+			-fno-tree-vectorize \
                         -funsafe-loop-optimizations \
                         -Wstrict-aliasing \
                         -Werror=strict-aliasing
@@ -83,8 +83,9 @@ endif
 
 # Modules can choose to compile some source as thumb.
 TARGET_thumb_CFLAGS := -mthumb \
-                        -Os \
+                        -O3 \
                         -fomit-frame-pointer \
+			-fno-tree-vectorize \
                         -funsafe-math-optimizations \
 			-fstrict-aliasing \
                         -Wstrict-aliasing \
@@ -175,6 +176,7 @@ TARGET_GLOBAL_CPPFLAGS += -fvisibility-inlines-hidden
 TARGET_RELEASE_CFLAGS := \
 			-DNDEBUG \
 			-g \
+			-fno-tree-vectorize \
 			-Wstrict-aliasing \
 			-Werror=strict-aliasing \
 			-fgcse-after-reload \
