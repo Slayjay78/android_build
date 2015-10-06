@@ -21,10 +21,10 @@ endif
 # The filter part means "only eval the copy-one-file rule if this
 # src:dest pair is the first one to match the same dest"
 #$(1): the src:dest pair
-define check-product-copy-files
-$(if $(filter %.apk, $(call word-colon, 2, $(1))),$(error \
-    Prebuilt apk found in PRODUCT_COPY_FILES: $(1), use BUILD_PREBUILT instead!))
-endef
+# define check-product-copy-files
+#$(if $(filter %.apk, $(call word-colon, 2, $(1))),$(error \
+#    Prebuilt apk found in PRODUCT_COPY_FILES: $(1), use BUILD_PREBUILT instead!))
+#endef
 # filter out the duplicate <source file>:<dest file> pairs.
 unique_product_copy_files_pairs :=
 $(foreach cf,$(PRODUCT_COPY_FILES), \
@@ -106,9 +106,9 @@ endif
 # Both of these tags will be removed and replaced with "release-keys"
 # when the target-files is signed in a post-build step.
 ifeq ($(DEFAULT_SYSTEM_DEV_CERTIFICATE),build/target/product/security/testkey)
-BUILD_KEYS := test-keys
+BUILD_KEYS :=
 else
-BUILD_KEYS := dev-keys
+BUILD_KEYS :=
 endif
 BUILD_VERSION_TAGS += $(BUILD_KEYS)
 BUILD_VERSION_TAGS := $(subst $(space),$(comma),$(sort $(BUILD_VERSION_TAGS)))
