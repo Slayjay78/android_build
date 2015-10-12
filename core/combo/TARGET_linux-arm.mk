@@ -67,16 +67,11 @@ $(combo_2nd_arch_prefix)TARGET_STRIP := $($(combo_2nd_arch_prefix)TARGET_TOOLS_P
 
 $(combo_2nd_arch_prefix)TARGET_NO_UNDEFINED_LDFLAGS := -Wl,--no-undefined
 
-$(combo_2nd_arch_prefix)TARGET_arm_CFLAGS :=    -O2 \
-                        -fomit-frame-pointer \
-                        -fstrict-aliasing    \
-                        -funswitch-loops
-
-# Modules can choose to compile some source as thumb.
-$(combo_2nd_arch_prefix)TARGET_thumb_CFLAGS :=  -mthumb \
-                        -Os \
-                        -fomit-frame-pointer \
-                        -fno-strict-aliasing
+BASE_CFLAGS := -Ofast -g0 -DNDEBUG -pipe -Wno-unused-parameter -Wno-unused-value -Wno-unused-function
+$(combo_2nd_arch_prefix)TARGET_arm_CFLAGS := -fomit-frame-pointer -funswitch-loops
+$(combo_2nd_arch_prefix)TARGET_thumb_CFLAGS := -fomit-frame-pointer
+$(combo_2nd_arch_prefix)TARGET_GLOBAL_CFLAGS += $(BASE_CFLAGS)
+$(combo_2nd_arch_prefix)TARGET_GLOBAL_CPPFLAGS += $(BASE_CFLAGS) -fvisibility-inlines-hidden
 
 # Set FORCE_ARM_DEBUGGING to "true" in your buildspec.mk
 # or in your environment to force a full arm build, even for
@@ -138,20 +133,9 @@ $(combo_2nd_arch_prefix)TARGET_GLOBAL_LDFLAGS += \
 			-Wl,--fatal-warnings \
 			-Wl,--icf=safe \
 			-Wl,--hash-style=gnu \
+			-Wl,-O3 \
 			$(arch_variant_ldflags)
-
-$(combo_2nd_arch_prefix)TARGET_GLOBAL_CFLAGS += -mthumb-interwork
-
-$(combo_2nd_arch_prefix)TARGET_GLOBAL_CPPFLAGS += -fvisibility-inlines-hidden
-
-# More flags/options can be added here
-$(combo_2nd_arch_prefix)TARGET_RELEASE_CFLAGS := \
-			-DNDEBUG \
-			-g \
-			-Wstrict-aliasing=2 \
-			-fgcse-after-reload \
-			-frerun-cse-after-loop \
-			-frename-registers
+			
 
 libc_root := bionic/libc
 libm_root := bionic/libm
