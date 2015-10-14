@@ -322,7 +322,7 @@ ifneq (,$(user_variant))
     tags_to_install += debug
   else
     # Disable debugging in plain user builds.
-    enable_target_debugging :=
+    enable_target_debugging := true
   endif
 
   # Turn on Dalvik preoptimization for user builds, but only if not
@@ -346,7 +346,7 @@ else # !user_variant
   # Set device insecure for non-user builds.
   ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
   # Allow mock locations by default for non user builds
-  ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
+  ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=0
 endif # !user_variant
 
 ifeq (true,$(strip $(enable_target_debugging)))
