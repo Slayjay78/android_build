@@ -20,7 +20,10 @@ LLVM_TBLGEN := $(BUILD_OUT_EXECUTABLES)/llvm-tblgen$(BUILD_EXECUTABLE_SUFFIX)
 
 # Clang flags for all host or target rules
 CLANG_CONFIG_EXTRA_ASFLAGS :=
+CLANG_CONFIG_EXTRA_CFLAGS :=
 CLANG_CONFIG_EXTRA_CONLYFLAGS := -std=gnu99
+CLANG_CONFIG_EXTRA_CPPFLAGS :=
+CLANG_CONFIG_EXTRA_LDFLAGS :=
 
 CLANG_CONFIG_EXTRA_CFLAGS += \
   -D__compiler_offsetof=__builtin_offsetof
@@ -78,15 +81,15 @@ CLANG_CONFIG_UNKNOWN_CFLAGS := \
 
 # Clang flags for all host rules
 CLANG_CONFIG_HOST_EXTRA_ASFLAGS :=
-CLANG_CONFIG_HOST_EXTRA_CFLAGS := -O3 -ftree-vectorize -ffunction-sections -fdata-sections -funroll-loops -march=x86-64
-CLANG_CONFIG_HOST_EXTRA_CPPFLAGS := -O3 -ftree-vectorize -ffunction-sections -fdata-sections -funroll-loops -march=x86-64
-CLANG_CONFIG_HOST_EXTRA_LDFLAGS := -Wl,-O3 -Wl,-z,relro -Wl,-z,now
+CLANG_CONFIG_HOST_EXTRA_CFLAGS :=
+CLANG_CONFIG_HOST_EXTRA_CPPFLAGS :=
+CLANG_CONFIG_HOST_EXTRA_LDFLAGS :=
 
 # Clang flags for all target rules
 CLANG_CONFIG_TARGET_EXTRA_ASFLAGS :=
-CLANG_CONFIG_TARGET_EXTRA_CFLAGS := -Ofast -ftree-vectorize -ffunction-sections -fdata-sections -nostdlibinc -funroll-loops
-CLANG_CONFIG_TARGET_EXTRA_CPPFLAGS := -Ofast -ftree-vectorize -ffunction-sections -fdata-sections -nostdlibinc -funroll-loops
-CLANG_CONFIG_TARGET_EXTRA_LDFLAGS := -Wl,-O3 -Wl,-z,relro -Wl,-z,now
+CLANG_CONFIG_TARGET_EXTRA_CFLAGS := -nostdlibinc
+CLANG_CONFIG_TARGET_EXTRA_CPPFLAGS := -nostdlibinc
+CLANG_CONFIG_TARGET_EXTRA_LDFLAGS :=
 
 CLANG_DEFAULT_UB_CHECKS := \
   bool \
