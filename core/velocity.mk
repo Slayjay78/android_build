@@ -42,7 +42,7 @@ LOCAL_DISABLE_STRICT := \
 	libqcomvisualizer \
 	libuclibcrpc \
 	busybox \
-	mm-vdec-omx-test \
+	mm-vdec-omx-test 
 	
 	
 ifneq ($(filter $(LOCAL_DISABLE_STRICT),$(LOCAL_MODULE)),)
