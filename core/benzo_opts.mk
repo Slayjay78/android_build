@@ -138,24 +138,26 @@ endif
 # 03
 ifeq ($(USE_O3_OPTIMIZATIONS),true)
 BENZO_CFLAGS_ARM := \
-	-O3 \
+	-O2 \
 	-fomit-frame-pointer \
 	-fstrict-aliasing    \
 	-funswitch-loops
 
 BENZO_CFLAGS_THUMB := \
-	-O3 \
 	-mthumb \
+	-Os \
 	-fomit-frame-pointer \
 	-fno-strict-aliasing
 
 BENZO_CFLAGS := \
-	-O3 \
-	-DNDEBUG
+	-DNDEBUG \
+	-Wstrict-aliasing=2 \
+	-fgcse-after-reload \
+	-frerun-cse-after-loop \
+	-frename-registers
 
 BENZO_CPPFLAGS := \
-	-O3 \
-	-DNDEBUG
+	-fvisibility-inlines-hidden
 
 BENZO_CLANG_CFLAGS := \
 	-O3 \
@@ -165,7 +167,8 @@ BENZO_CLANG_CFLAGS := \
 BENZO_CLANG_CPPFLAGS := \
 	-O3 \
 	-Qunused-arguments \
-	-Wno-unknown-warning-option
+	-Wno-unknown-warning-option \
+	-D__compiler_offsetof=__builtin_offsetof
 
 BENZO_CLANG_LDFLAGS := -Wl,--sort-common
 else
