@@ -586,7 +586,7 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
     build = GetBuildProp("ro.build.date", OPTIONS.info_dict)
 
     script.Print("******************************************");
-    script.Print("*     Chroma ROM for %s           *"%(model));
+    script.Print("*     Rusted Mellow for %s           *"%(model));
     script.Print("*     Compiled: %s *"%(build));
     script.Print("******************************************");
 
