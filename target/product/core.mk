@@ -21,11 +21,13 @@
 # core_tiny.mk in addition to core_minimal.mk.
 
 PRODUCT_PACKAGES += \
+    Browser \ 
     Calculator \
     CalendarProvider \
     CaptivePortalLogin \
     CertInstaller \
     Contacts \
+    DeskClock \ 
     DocumentsUI \
     DownloadProviderUi \
     ExternalStorageProvider \
@@ -34,6 +36,7 @@ PRODUCT_PACKAGES += \
     KeyChain \
     Keyguard \
     LatinIME \
+    Launcher3 \ 
     ManagedProvisioning \
     PacProcessor \
     libpac \
