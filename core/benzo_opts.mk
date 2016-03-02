@@ -133,7 +133,17 @@ ifeq ($(DONT_ERROROUT),true)
  endif
 endif
 
+################
+# Cortex Tuning
+################
+LOCAL_DISABLE_CORTEX := \
+	bluetooth.default 
 
+ifeq (arm,$(TARGET_ARCH))
+CORTEX_FLAGS := \
+        -mcpu=cortex-a57.cortex-a53 \
+        -mtune=cortex-a57.cortex-a53
+endif
 
 # 03
 ifeq ($(USE_O3_OPTIMIZATIONS),true)
