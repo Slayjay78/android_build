@@ -495,23 +495,43 @@ endif
 # OpenMP
 ifeq ($(ENABLE_GOMP),true)
 LOCAL_DISABLE_GOMP := \
+	bcc_strip_attr \
+	libbccSupport \
+	libblas \
+	libblasV8 \
+	libbluetooth_jni_32 \
+	libc_tzcode \
+	libF77blas \
+	libfuse \
+	libLLVMAsmParser \
+	libLLVMBitReader \
+	libLLVMCodeGen \
+	libLLVMInstCombine \
+	libLLVMMCParser \
+	libLLVMSupport \
+	libLLVMSelectionDAG \
+	libLLVMTransformUtils \
+	libmedia \
+	libpng \
+	libRS \
+	libRSCpuRef \
+	libstagefright_mpeg2ts \
+	$(NO_ART_OPTS) \
 	$(NOOP_BLUETOOTH) \
 	$(NO_OPTIMIZATIONS)
 
  ifneq ($(filter arm arm64,$(TARGET_ARCH)),)
   ifneq ($(strip $(LOCAL_IS_HOST_MODULE)),true)
-   ifneq ($(strip $(LOCAL_CLANG)),true)
-    ifeq ($(filter $(LOCAL_DISABLE_GOMP), $(LOCAL_MODULE)),)
-     ifdef LOCAL_CFLAGS
-      LOCAL_CFLAGS += -lgomp -ldl -lgcc -fopenmp
-     else
-      LOCAL_CFLAGS := -lgomp -ldl -lgcc -fopenmp
-     endif
-     ifdef LOCAL_LDLIBS
-      LOCAL_LDLIBS += -lgomp -lgcc
-     else
-      LOCAL_LDLIBS := -lgomp -lgcc
-     endif
+   ifeq ($(filter $(LOCAL_DISABLE_GOMP), $(LOCAL_MODULE)),)
+    ifdef LOCAL_CFLAGS
+     LOCAL_CFLAGS += -lgomp -ldl -lgcc -fopenmp
+    else
+     LOCAL_CFLAGS := -lgomp -ldl -lgcc -fopenmp
+    endif
+    ifdef LOCAL_LDLIBS
+     LOCAL_LDLIBS += -lgomp -lgcc
+    else
+     LOCAL_LDLIBS := -lgomp -lgcc
     endif
    endif
   endif
