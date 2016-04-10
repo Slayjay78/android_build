@@ -39,7 +39,7 @@ endif
 
 # Disable modules that don't work with DragonTC. Split up by arch.
 DISABLE_DTC_arm := libm libblasV8 libperfprofdcore libperfprofdutils perfprofd libjavacrypto libscrypt_static libmedia
-DISABLE_DTC_arm64 := libm libblasV8 libperfprofdcore libperfprofdutils perfprofd libjavacrypto libscrypt_static libmedia
+DISABLE_DTC_arm64 := libm libblasV8 libperfprofdcore libperfprofdutils perfprofd libjavacrypto libscrypt_static libmedia libRSDriver
 
 # Set DISABLE_DTC based on arch
 DISABLE_DTC := \
@@ -72,7 +72,7 @@ DISABLE_POLLY_arm := \
   libprotobuf-cpp-lite \
   libRSCpuRef \
   libRS	\
-  libRSDrive
+  libRSDriver
 
 DISABLE_POLLY_arm64 := \
   libbccSupport \
@@ -88,7 +88,7 @@ DISABLE_POLLY_arm64 := \
   libLLVMTransformUtils \
   libstagefright_mpeg2ts \
   bcc_strip_attr \
-  libRSDrive
+  libRSDriver
 
 # Add version specific disables.
 ifeq (1,$(words $(filter 3.8 3.9,$(LLVM_PREBUILTS_VERSION))))
