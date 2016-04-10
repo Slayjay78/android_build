@@ -38,8 +38,28 @@ else
 endif
 
 # Disable modules that don't work with DragonTC. Split up by arch.
-DISABLE_DTC_arm := libm libblasV8 libperfprofdcore libperfprofdutils perfprofd libjavacrypto libscrypt_static libmedia
-DISABLE_DTC_arm64 := libm libblasV8 libperfprofdcore libperfprofdutils perfprofd libjavacrypto libscrypt_static libmedia libRSDriver libRSSupport
+DISABLE_DTC_arm := \
+  libm \
+  libblasV8 \
+  libperfprofdcore \
+  libperfprofdutils \
+  perfprofd \
+  libjavacrypto \
+  libscrypt_static \
+  libmedia
+
+DISABLE_DTC_arm64 := \
+  libm \
+  libblasV8 \
+  libperfprofdcore \
+  libperfprofdutils \
+  perfprofd \
+  libjavacrypto \
+  libscrypt_static \
+  libmedia \
+  libRSDriver \
+  libRSSupport \
+  libLLVMObject
 
 # Set DISABLE_DTC based on arch
 DISABLE_DTC := \
