@@ -46,7 +46,8 @@ DISABLE_DTC_arm := \
   perfprofd \
   libjavacrypto \
   libscrypt_static \
-  libmedia
+  libmedia \
+  libRSSupport
 
 DISABLE_DTC_arm64 := \
   libm \
@@ -92,7 +93,8 @@ DISABLE_POLLY_arm := \
   libprotobuf-cpp-lite \
   libRSCpuRef \
   libRS	\
-  libRSDriver
+  libRSDriver \
+  libRSSupport
 
 DISABLE_POLLY_arm64 := \
   libbccSupport \
