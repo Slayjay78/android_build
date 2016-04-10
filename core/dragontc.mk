@@ -47,7 +47,8 @@ DISABLE_DTC_arm := \
   libjavacrypto \
   libscrypt_static \
   libmedia \
-  libRSSupport
+  libRSSupport \
+  libstagefright
 
 DISABLE_DTC_arm64 := \
   libm \
@@ -56,12 +57,7 @@ DISABLE_DTC_arm64 := \
   libperfprofdutils \
   perfprofd \
   libjavacrypto \
-  libscrypt_static \
-  libmedia \
-  libRSDriver \
-  libRSSupport \
-  libLLVMObject \
-  libstagefright
+  libscrypt_static
 
 # Set DISABLE_DTC based on arch
 DISABLE_DTC := \
@@ -110,9 +106,8 @@ DISABLE_POLLY_arm64 := \
   libLLVMSelectionDAG \
   libLLVMTransformUtils \
   libstagefright_mpeg2ts \
-  bcc_strip_attr \
-  libRSDriver \
-  libRSSupport
+  bcc_strip_attr 
+  
 
 # Add version specific disables.
 ifeq (1,$(words $(filter 3.8 3.9,$(LLVM_PREBUILTS_VERSION))))
@@ -142,7 +137,12 @@ ifeq (1,$(words $(filter 3.8 3.9,$(LLVM_PREBUILTS_VERSION))))
 	libunwind_llvm \
 	libvixl \
 	libvterm \
-	libxml2
+	libxml2 \
+        libRSDriver \
+        libRSSupport \
+        libmedia \
+        libLLVMObject \
+        libstagefright
 endif
 
 # Set DISABLE_POLLY based on arch
