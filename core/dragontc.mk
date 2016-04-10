@@ -60,7 +60,8 @@ DISABLE_DTC_arm64 := \
   libmedia \
   libRSDriver \
   libRSSupport \
-  libLLVMObject
+  libLLVMObject \
+  libstagefright
 
 # Set DISABLE_DTC based on arch
 DISABLE_DTC := \
