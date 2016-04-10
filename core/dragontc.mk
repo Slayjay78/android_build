@@ -108,7 +108,8 @@ DISABLE_POLLY_arm64 := \
   libLLVMTransformUtils \
   libstagefright_mpeg2ts \
   bcc_strip_attr \
-  libRSDriver
+  libRSDriver \
+  libRSSupport
 
 # Add version specific disables.
 ifeq (1,$(words $(filter 3.8 3.9,$(LLVM_PREBUILTS_VERSION))))
