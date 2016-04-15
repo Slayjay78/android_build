@@ -86,12 +86,16 @@ DISABLE_POLLY_arm := \
   libLLVMMC \
   libmedia \
   libminui \
-  libpng \
-  libprotobuf-cpp-lite \
+  libF77blas \
+  libF77blasV8 \
   libRSCpuRef \
   libRS	\
-  libRSDriver \
-  libRSSupport
+  libRSDriver\
+  libRSSupport \
+  libmedia \
+  libjni_latinime_common_static \
+  libvterm \
+  libxml2
 
 DISABLE_POLLY_arm64 := \
   libbccSupport \
